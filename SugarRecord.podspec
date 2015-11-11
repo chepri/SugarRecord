@@ -14,6 +14,7 @@ Pod::Spec.new do |s|
   s.platform     = :ios, '8.0'
   s.requires_arc = true
   s.dependency 'ReactiveCocoa', '4.0.4-alpha-1'
+  s.dependency 'Result', '0.6.0-beta.6'
   s.source_files = ['SugarRecord/SugarRecord/Source/Foundation/**/*']
 
   s.subspec "CoreData" do |sp|

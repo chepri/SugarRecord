@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = "SugarRecord"
-  s.version          = "2.0.0"
+  s.version          = "2.0.0-1"
   s.watchos.deployment_target = '2.0'
   s.tvos.deployment_target = '9.0'
   s.ios.deployment_target = '8.0'
@@ -15,6 +15,10 @@ Pod::Spec.new do |s|
   s.requires_arc = true
   s.dependency 'ReactiveCocoa', '4.0.4-alpha-1'
   s.source_files = ['SugarRecord/SugarRecord/Source/Foundation/**/*']
+
+  s.subspec "Core" do |sp|
+    sp.source_files = ['SugarRecord/SugarRecord/Source/Foundation/**/*']
+  end
 
   s.subspec "CoreData" do |sp|
     sp.source_files = ['SugarRecord/SugarRecord/Source/CoreData/**/*']

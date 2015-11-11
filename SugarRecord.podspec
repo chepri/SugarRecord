@@ -13,7 +13,7 @@ Pod::Spec.new do |s|
   s.social_media_url = 'https://twitter.com/pepibumue'
   s.platform     = :ios, '8.0'
   s.requires_arc = true
-  s.dependency 'ReactiveCocoa', '~> 4.0'
+  s.dependency 'ReactiveCocoa', '4.0.4-alpha-1'
   s.source_files = ['SugarRecord/SugarRecord/Source/Foundation/**/*']
 
   s.subspec "CoreData" do |sp|

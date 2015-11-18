@@ -1,8 +1,6 @@
-# <center>![xcres](/Assets/Banner.png)</center>
+# <center>![xcres](https://github.com/gitdoapp/SugarRecord/raw/version2/Assets/Banner.png)</center>
 
 # SugarRecord
-
-:warning::warning: Version in progress, please use the master branch for production (only Swift 1.x) :warning: :warning:
 
 [![Twitter: @pepibumur](https://img.shields.io/badge/contact-@pepibumur-blue.svg?style=flat)](https://twitter.com/pepibumur)
 [![Language: Swift](https://img.shields.io/badge/lang-Swift-yellow.svg?style=flat)](https://developer.apple.com/swift/)
@@ -48,12 +46,22 @@ The library is maintained by [@pepibumur](https://github.com/pepibumur) under [G
 5. Add generated frameworks to your app main target following the steps [here](https://github.com/carthage/carthage)
 6. Link your target with **CoreData** library *(from Build Phases)*
 
-## How to use it
-//TODO
+## Version 2.0 Checklist :white_check_mark:
+- [ ] Development
+ - [ ] CoreDataDefaultStorage tests
+ - [ ] Request fluent interface
+- [ ] Documentation (Jazzy): *Make sure all the components are documented*
+- [ ] Create Contribution document
+  - Make tasks
+  - Style guideline
+  - Unit testing
 
 ## Features backlog
-- Reactive API
-- Logging support
+- [ ] Reactive API
+- [ ] Logging support
+
+## Reference
+You can check the SugarRecord documentation [here](http://blog.gitdo.io/SugarRecord/). Thanks [**Jazzy**](https://github.com/realm/jazzy) for that powerful tool for generating documentation :tada:
 
 ## Support
 
@@ -99,4 +107,4 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 
 ## Who uses SugarRecord?
-Are you using SugarRecord? Let us know, and we'll list you here. We :heart: to hear about companies, apps that are using us with CoreData. 
+Are you using SugarRecord? Let us know, and we'll list you here. We :heart: to hear about companies, apps that are using us with CoreData.

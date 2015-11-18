@@ -17,17 +17,19 @@ public enum StorageType {
  */
 public protocol Storage: CustomStringConvertible {
     
+    typealias Saver = () -> Void
+    
     /// Storage type
     var type: StorageType { get }
     
     /// Main context. This context is mostly used for querying operations
-    var mainContext: Context { get }
+    var mainContext: Context! { get }
     
     /// Save context. This context is mostly used for save operations
-    var saveContext: Context { get }
+    var saveContext: Context! { get }
     
     /// Memory context. This context is mostly used for testing (not persisted)
-    var memoryContext: Context { get }
+    var memoryContext: Context! { get }
     
     /**
      Removes the store     
@@ -37,10 +39,11 @@ public protocol Storage: CustomStringConvertible {
     /**
      Executes the provided operation in background
     
-     - parameter write: true if the context has to persist the changes
      - parameter operation: operation to be executed
+     - parameter save:      closure to be called to persist the changes
+     - parameter completed: closure called when the execution is completed
      */
-    func operation(write: Bool, operation: (context: Context) -> Void)
+    func operation(operation: (context: Context, save: Saver) -> Void, completed: (() -> Void)?)
     
     /**
      Executes the provided operation in a given queue
@@ -48,10 +51,11 @@ public protocol Storage: CustomStringConvertible {
      Some storages require propagating these saves across the stack of contexts (e.g. CoreData)
      
      - parameter queue:     queue where the operation will be executed
-     - parameter write: true if the context has to persist the changes
      - parameter operation: operation to be executed
+     - parameter save:      closure to be called to persist the changes
+     - parameter completed: closure called when the execution is completed
      */
-    func operation(queue: dispatch_queue_t, write: Bool, operation: (context: Context) -> Void)
+    func operation(queue queue: Queue, operation: (context: Context, save: Saver) -> Void, completed: (() -> Void)?)
 }
 
 
@@ -59,9 +63,8 @@ public protocol Storage: CustomStringConvertible {
 
 public extension Storage {
     
-    func operation(write: Bool, operation: (context: Context) -> Void) {
-        let queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0)
-        self.operation(queue, write: write, operation: operation)
+    func operation(operation: (context: Context, save: Saver) -> Void, completed: (() -> Void)?) {
+        self.operation(queue: Queue.Background, operation: operation, completed: completed)
     }
     
 }
